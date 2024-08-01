@@ -1,3 +1,10 @@
+import styles from "./page.module.css";
+
 export default function MealPage() {
-  return <h1>Meal Page</h1>;
+  return (
+    <>
+      <header></header>
+      <main></main>
+    </>
+  );
 }
