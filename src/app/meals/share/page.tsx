@@ -2,6 +2,10 @@ import ImagePicker from "@/components/image-picker/image-picker";
 import styles from "./page.module.css";
 
 export default function ShareMealPage() {
+  const shareMeal = async () => {
+    "use server";
+  };
+
   return (
     <>
       <header className={styles.header}>
