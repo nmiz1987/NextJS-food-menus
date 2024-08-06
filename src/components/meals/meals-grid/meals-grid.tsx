@@ -7,9 +7,9 @@ interface MealsGridProps {
 export default function MealsGrid({ meals }: MealsGridProps) {
   return (
     <ul className={styles.meals}>
-      {meals.map((meal) => (
+      {meals.map((meal, index) => (
         <li key={meal.id}>
-          <MealsItem {...meal} />
+          <MealsItem {...meal} index={index} />
         </li>
       ))}
     </ul>

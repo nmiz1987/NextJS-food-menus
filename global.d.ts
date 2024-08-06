@@ -7,4 +7,5 @@ interface MealsItemProps {
   creator: string;
   creator_email: string;
   instructions: string;
+  index?: number;
 }

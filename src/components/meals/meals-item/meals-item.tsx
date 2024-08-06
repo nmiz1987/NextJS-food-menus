@@ -2,12 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./meals-item.module.css";
 
-export default function MealsItem({ title, slug, image, summary, creator }: MealsItemProps) {
+export default function MealsItem({ title, slug, image, summary, creator, index = 0 }: MealsItemProps) {
   return (
     <article className={styles.meal}>
       <header>
         <div className={styles.image}>
-          <Image src={image} alt={title} fill />
+          <Image src={image} alt={title} fill sizes="100%" priority={index <= 3} />
         </div>
         <div className={styles.headerText}>
           <h2>{title}</h2>

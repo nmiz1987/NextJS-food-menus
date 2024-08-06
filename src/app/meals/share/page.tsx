@@ -1,11 +1,8 @@
 import ImagePicker from "@/components/image-picker/image-picker";
 import styles from "./page.module.css";
+import { shareMeal } from "@/lib/actions";
 
 export default function ShareMealPage() {
-  const shareMeal = async () => {
-    "use server";
-  };
-
   return (
     <>
       <header className={styles.header}>
@@ -38,7 +35,7 @@ export default function ShareMealPage() {
             <label htmlFor="instructions">Instructions</label>
             <textarea id="instructions" name="instructions" rows={10} required></textarea>
           </p>
-          <ImagePicker label="" name="" />
+          <ImagePicker label="Your image" name="image" />
           <p className={styles.actions}>
             <button type="submit">Share Meal</button>
           </p>
