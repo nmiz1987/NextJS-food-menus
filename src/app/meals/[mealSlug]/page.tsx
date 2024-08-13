@@ -9,6 +9,19 @@ interface MealDetailPageProps {
   };
 }
 
+export async function generateMetadata({ params }: MealDetailPageProps) {
+  const meal = getMeal(params.mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
+
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+}
+
 export default function MealDetailPage({ params }: MealDetailPageProps) {
   const meal = getMeal(params.mealSlug);
 
