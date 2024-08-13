@@ -3,10 +3,7 @@
 import { redirect } from "next/navigation";
 import { deleteMeal, saveMeal } from "./meals";
 import { revalidatePath } from "next/cache";
-
-const isInvalidText = (input: string) => {
-  return !input || input.trim() === "";
-};
+import { mealSchema } from "@/validations/mealSchema";
 
 export const removeMeal = async (mealSlug: string) => {
   await deleteMeal(mealSlug);
@@ -25,16 +22,9 @@ export const shareMeal = async (prevState: { message: string }, formData: FormDa
     slug: "",
   };
 
-  if (
-    isInvalidText(meal.title) ||
-    isInvalidText(meal.summary) ||
-    isInvalidText(meal.instructions) ||
-    isInvalidText(meal.creator) ||
-    isInvalidText(meal.creator_email) ||
-    !meal.creator_email.includes("@") ||
-    !meal.image ||
-    meal.image.size === 0
-  ) {
+  const result = mealSchema.safeParse(meal);
+
+  if (!result.success) {
     return {
       message: "Invalid input. Please check your input and try again.",
     };
