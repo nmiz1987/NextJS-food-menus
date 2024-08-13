@@ -6,7 +6,7 @@ import { removeMeal } from "@/lib/actions";
 interface DeleteMealButtonProps {
   mealSlug: string;
 }
-// deleteMeal(mealSlug)
+
 export default function DeleteMealButton({ mealSlug }: DeleteMealButtonProps) {
   return (
     <button className={styles.button} onClick={() => removeMeal(mealSlug)}>
