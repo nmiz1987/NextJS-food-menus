@@ -1,11 +1,17 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { saveMeal } from "./meals";
+import { deleteMeal, saveMeal } from "./meals";
 import { revalidatePath } from "next/cache";
 
 const isInvalidText = (input: string) => {
   return !input || input.trim() === "";
+};
+
+export const removeMeal = async (mealSlug: string) => {
+  await deleteMeal(mealSlug);
+  revalidatePath("/meals");
+  redirect("/meals");
 };
 
 export const shareMeal = async (prevState: { message: string }, formData: FormData) => {

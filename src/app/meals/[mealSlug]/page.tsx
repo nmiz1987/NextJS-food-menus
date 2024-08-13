@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { getMeal } from "@/lib/meals";
 import { notFound } from "next/navigation";
+import DeleteMealButton from "@/components/delete-meal-button/delete-meal-button";
 
 interface MealDetailPageProps {
   params: {
@@ -51,6 +52,11 @@ export default function MealDetailPage({ params }: MealDetailPageProps) {
           }}
         ></p>
       </main>
+      <footer>
+        <p className={styles.button}>
+          <DeleteMealButton mealSlug={params.mealSlug} />
+        </p>
+      </footer>
     </>
   );
 }

@@ -34,6 +34,12 @@
   text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
 }
 
+.button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 .creator {
   font-size: 1.5rem;
   color: #cfa69b;

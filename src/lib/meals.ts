@@ -14,8 +14,11 @@ interface SaveMealProps {
   slug: string;
 }
 
+export async function deleteMeal(mealSlug: string) {
+  db.prepare("DELETE FROM meals WHERE slug = ?").run(mealSlug);
+}
+
 export async function getMeals() {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
   return db.prepare("SELECT * FROM meals").all() as MealsItemProps[];
 }
 
