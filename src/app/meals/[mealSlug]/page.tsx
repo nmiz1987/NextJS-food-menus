@@ -5,13 +5,14 @@ import { notFound } from "next/navigation";
 import DeleteMealButton from "@/components/delete-meal-button/delete-meal-button";
 
 interface MealDetailPageProps {
-  params: {
+  params: Promise<{
     mealSlug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: MealDetailPageProps) {
-  const meal = getMeal(params.mealSlug);
+  const { mealSlug } = await params;
+  const meal = getMeal(mealSlug);
 
   if (!meal) {
     notFound();
@@ -23,8 +24,9 @@ export async function generateMetadata({ params }: MealDetailPageProps) {
   };
 }
 
-export default function MealDetailPage({ params }: MealDetailPageProps) {
-  const meal = getMeal(params.mealSlug);
+export default async function MealDetailPage({ params }: MealDetailPageProps) {
+  const { mealSlug } = await params;
+  const meal = getMeal(mealSlug);
 
   if (!meal) {
     notFound();
@@ -54,7 +56,7 @@ export default function MealDetailPage({ params }: MealDetailPageProps) {
       </main>
       <footer>
         <p className={styles.button}>
-          <DeleteMealButton mealSlug={params.mealSlug} />
+          <DeleteMealButton mealSlug={mealSlug} />
         </p>
       </footer>
     </>
